@@ -1,0 +1,21 @@
+
+# constants for game
+GRAVITY = 2 # change in Y_CHANGE
+BALL_X_POS = 130 # x position of the ball
+BALL_COLOR = (100, 100, 100)
+BALL_RADIUS = 15
+OBSTACLE_COLOR = (0, 0, 255)
+
+# constants for view
+WINDOW_WIDTH = 500
+WINDOW_HEIGHT = 500
+FPS = 40
+BLACK = (0,0,0)
+WHITE = (255, 255, 255)
+
+# constants for obstacles
+OBSTACLE_WIDTH = 20
+OBSTACLE_X_CHANGE = 7
+INIT_X_LOC = WINDOW_WIDTH + OBSTACLE_WIDTH
+HEIGHT_MAX = 145
+HEIGHT_MIN = 70
