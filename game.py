@@ -12,6 +12,28 @@ class game:
         self.jumped = False # represents whether the ball was jumped
         self.in_air = False # represents whether the ball is in the air
         self.current_obstacle = 0 # represents index of current obstacle
+        self.generation = 0 # generation of networks
+        self.top_score = 0 # top score of all networks
+
+    def get_top_score(self):
+        return self.top_score
+
+    def set_top_score(self, networks):
+        '''
+        Updates top score based on hit networks from previous generation
+        '''
+        new_score = networks[0]['score']
+        if new_score > self.top_score:
+            self.top_score = new_score
+
+    def get_generation(self):
+        return self.generation
+
+    def increment_generation(self):
+        '''
+        Increments self.generation by one
+        '''
+        self.generation += 1
     
     def move_ball(self):
         ''' Moves ball vertically according to gravity by changing ball_y

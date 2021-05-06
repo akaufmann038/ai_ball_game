@@ -23,6 +23,15 @@ pygame.display.update() # updates display
 
 clock = pygame.time.Clock() # creates game clock
 
+def draw_information():
+    '''
+    Draws the game information next to the game animation
+    '''
+    generation_text = LETTER_FONT.render(f'Generation: {my_network.game_object.get_generation()}', 1, WHITE)
+    high_score_text = LETTER_FONT.render(f'High Score: {my_network.game_object.get_top_score()}', 1, WHITE)
+    win.blit(generation_text, (20, 20))
+    win.blit(high_score_text, (20, 40))
+
 def draw_ball():
     '''
     Draws the ball on the screen
@@ -51,6 +60,7 @@ def draw_score():
 def draw():
     draw_ball()
     draw_obstacles()
+    draw_information()
     #draw_score()
     pygame.display.update()
 
@@ -60,7 +70,7 @@ def create_obstacle(frames):
 
 frames = 0
 is_quit = False
-# NOTE: this is not working properly !!!!!!
+
 while not is_quit:
     # FPS
     clock.tick(FPS)

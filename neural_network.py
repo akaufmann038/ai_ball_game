@@ -54,11 +54,14 @@ class network_object:
         # map hit_networks to list of dicts holding score and weights
         mapped_networks = map(lambda x: {'score': x.get_score(), 'weights': x.sny0}, 
         self.hit_networks)
-
+        
         # sort networks in decreasing order by score
         sorted_networks = sorted(mapped_networks, key = lambda x: x['score'], reverse=True)
         print(f'sorted: {sorted_networks}')
-        # get first three networks (networks with top 3 scores)
+
+        # update the top score in game object based on hit networks from previous generation
+        self.game_object.set_top_score(sorted_networks)
+
         # NOTE: if there are three networks with scores greater than 0, then get top three,
         # otherwise, only get the ones with scores to creates new ones with. If all have 
         # a score of 0, create brand new random weights 
@@ -93,6 +96,8 @@ class network_object:
         self.hit_networks = []
         # clear obstacles
         self.game_object.clear_obstacles()
+        # increment generation
+        self.game_object.increment_generation()
 
     def move_obstacles(self):
         self.game_object.move_obstacles()
@@ -189,9 +194,6 @@ class neural_network:
 
     def move_ball(self):
         self.gm.move_ball()
-
-    #def move_obstacles(self):
-    #    self.gm.move_obstacles()
 
     def is_collision(self):
         self.gm.is_collision()
